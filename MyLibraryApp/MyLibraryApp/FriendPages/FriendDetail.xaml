@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyLibraryApp.FriendDetail"
+             Title="{Binding FirstName}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Clicked="Btn_delete_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="First Name:"/>
+                <Label Text="{Binding FirstName}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Last Name:"/>
+                <Label Text="{Binding LastName}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Phone:"/>
+                <Label Text="{Binding Phone}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Email:"/>
+                <Label Text="{Binding Email}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

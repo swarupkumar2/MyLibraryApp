@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyLibraryApp.BookDetail"
+             Appearing="ContentPage_Appearing">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Btn_action" Clicked="ToolbarItem_Clicked"/>
+        <ToolbarItem Text="Delete" Clicked="Btn_delete_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <Image x:Name="Img_book" HeightRequest="100" Aspect="AspectFit" WidthRequest="100"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Title:"/>
+                    <Label Text="{Binding Title}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Author(s):"/>
+                    <Label Text="{Binding Author}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="ISBN:"/>
+                    <Label Text="{Binding Isbn}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Is Available:"/>
+                    <Label x:Name="Lbl_avail" FontAttributes="Bold"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Description:"/>
+                    <Label Text="{Binding Description}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>
