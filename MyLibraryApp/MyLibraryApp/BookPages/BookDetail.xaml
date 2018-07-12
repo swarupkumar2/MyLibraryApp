@@ -5,7 +5,7 @@
              Appearing="ContentPage_Appearing">
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Btn_action" Clicked="ToolbarItem_Clicked"/>
+        <ToolbarItem x:Name="Btn_action" Clicked="Btn_action_Clicked"/>
         <ToolbarItem Text="Delete" Clicked="Btn_delete_Clicked"/>
     </ContentPage.ToolbarItems>
     

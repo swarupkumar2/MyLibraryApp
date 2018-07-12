@@ -2,9 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyLibraryApp.FriendDetail"
+             Appearing="ContentPage_Appearing"
              Title="{Binding FirstName}">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Btn_action" Clicked="Btn_action_Clicked"/>
         <ToolbarItem Text="Delete" Clicked="Btn_delete_Clicked"/>
     </ContentPage.ToolbarItems>
     
@@ -12,19 +14,19 @@
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal">
                 <Label Text="First Name:"/>
-                <Label Text="{Binding FirstName}"/>
+                <Label x:Name="Lbl_fname" Text="{Binding FirstName}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Last Name:"/>
-                <Label Text="{Binding LastName}"/>
+                <Label x:Name="Lbl_lname" Text="{Binding LastName}"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
+            <StackLayout x:Name="Sly_editable">
                 <Label Text="Phone:"/>
-                <Label Text="{Binding Phone}"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
+                <!--<Label x:Name="Lbl_phone" Text="{Binding Phone}"/>-->
+                <Entry x:Name="Lbl_phone" FontSize="Small" />
                 <Label Text="Email:"/>
-                <Label Text="{Binding Email}"/>
+                <!--<Label x:Name="Lbl_email" Text="{Binding Email}"/>-->
+                <Entry x:Name="Lbl_email" FontSize="Small" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

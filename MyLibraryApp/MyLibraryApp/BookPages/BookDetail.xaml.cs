@@ -62,7 +62,7 @@ namespace MyLibraryApp
             return response.GetResponseStream();
         }
 
-        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        private async void Btn_action_Clicked(object sender, EventArgs e)
         {
             if(book.Availability == "Yes")
             {

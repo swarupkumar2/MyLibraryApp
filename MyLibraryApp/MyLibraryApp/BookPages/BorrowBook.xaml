@@ -4,6 +4,8 @@
              x:Class="MyLibraryApp.BorrowBook">
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Select friend who wants to borrow." />
+            <Picker x:Name="Pkr_fndlst"/>
             <Button Text="Borrow" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

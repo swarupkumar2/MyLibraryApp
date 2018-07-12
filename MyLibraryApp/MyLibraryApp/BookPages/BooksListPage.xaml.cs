@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +28,7 @@ namespace MyLibraryApp
         private void ContentPage_Appearing(object sender, EventArgs e)
         {
             LV_bklst.SelectedItem = null;
+            Sbr_books.Text = null;
             LV_bklst.ItemsSource = App._booklist;
         }
 
@@ -35,6 +38,20 @@ namespace MyLibraryApp
             {
                 await Navigation.PushAsync(new BookDetail(LV_bklst.SelectedItem as Book));
             }
+        }
+
+        private void Sbr_books_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LV_bklst.BeginRefresh();
+            if (string.IsNullOrWhiteSpace(e.NewTextValue))
+            {
+                LV_bklst.ItemsSource = App._booklist;
+            }
+            else
+            {
+                LV_bklst.ItemsSource = App._booklist.Where(b => (b.Title.ToLower().Contains(e.NewTextValue.ToLower())) | (b.Author.ToLower().Contains(e.NewTextValue.ToLower())));
+            }
+            LV_bklst.EndRefresh();
         }
     }
 }

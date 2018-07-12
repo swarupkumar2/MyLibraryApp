@@ -25,6 +25,7 @@ namespace MyLibraryApp
         private void ContentPage_Appearing(object sender, EventArgs e)
         {
             LV_fnlst.SelectedItem = null;
+            Sbr_friends.Text = null;
             LV_fnlst.ItemsSource = App._friendlist;
         }
 
@@ -34,6 +35,20 @@ namespace MyLibraryApp
             {
                 await Navigation.PushAsync(new FriendDetail(LV_fnlst.SelectedItem as Friend));
             }
+        }
+
+        private void Sbr_friends_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LV_fnlst.BeginRefresh();
+            if (string.IsNullOrWhiteSpace(e.NewTextValue))
+            {
+                LV_fnlst.ItemsSource = App._friendlist;
+            }
+            else
+            {
+                LV_fnlst.ItemsSource = App._friendlist.Where(f => (f.FirstName.ToLower().Contains(e.NewTextValue.ToLower())) | (f.LastName.ToLower().Contains(e.NewTextValue.ToLower())));
+            }
+            LV_fnlst.EndRefresh();
         }
     }
 }
