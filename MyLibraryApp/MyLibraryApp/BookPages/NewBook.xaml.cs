@@ -1,4 +1,5 @@
 ﻿using Goodreads;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -67,7 +68,15 @@ namespace MyLibraryApp
                 var client = GoodreadsClient.Create(apiKey, apiSecret);
                 var localbook = await client.Books.GetByIsbn(Ent_isbn.Text);
                 Ent_title.Text = localbook.Title;
-                Ent_desc.Text = localbook.Description;
+
+                //---------Convert HTML to plain Text for Description-------------
+                var pageContent = localbook.Description;
+                var pageDoc = new HtmlDocument();
+                pageDoc.LoadHtml(pageContent);
+                Ent_desc.Text = pageDoc.DocumentNode.InnerText;
+                //----------------------
+
+                //Ent_desc.Text = localbook.Description;
                 Ent_img.Text = localbook.ImageUrl;
 
                 foreach(var author in localbook.Authors)

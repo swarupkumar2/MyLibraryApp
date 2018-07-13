@@ -11,8 +11,8 @@
     
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Orientation="Vertical">
-                <Image x:Name="Img_book" HeightRequest="100" Aspect="AspectFit" WidthRequest="100"/>
+            <StackLayout Orientation="Vertical" Margin="10">
+                <Image x:Name="Img_book" HeightRequest="300" Aspect="AspectFit"  WidthRequest="150"/>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Title:"/>
                     <Label Text="{Binding Title}"/>
