@@ -23,6 +23,12 @@ namespace MyLibraryApp
 
         private async void Btn_save_Clicked(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(Ent_phone.Text) | string.IsNullOrEmpty(Ent_fname.Text) | string.IsNullOrWhiteSpace(Ent_phone.Text) | string.IsNullOrWhiteSpace(Ent_fname.Text))
+            {
+                await DisplayAlert("Alert", "Phone and/or First Name are missing.", "OK");
+                return;
+            }
+
             friend.Phone = Ent_phone.Text;
             friend.FirstName = Ent_fname.Text;
             friend.LastName = Ent_lname.Text;
@@ -42,6 +48,15 @@ namespace MyLibraryApp
         private void Btn_populate_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private void Btn_clear_Clicked(object sender, EventArgs e)
+        {
+            Ent_phone.Text = string.Empty;
+            Ent_fname.Text = string.Empty;
+            Ent_lname.Text = string.Empty;
+            Ent_email.Text = string.Empty;
+            //Ent_img.Text = string.Empty;
         }
     }
 }

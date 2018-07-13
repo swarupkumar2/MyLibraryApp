@@ -28,6 +28,12 @@ namespace MyLibraryApp
 
         private async void Btn_save_Clicked(object sender, EventArgs e)
         {
+            if(string.IsNullOrEmpty(Ent_isbn.Text) | string.IsNullOrEmpty(Ent_title.Text) | string.IsNullOrWhiteSpace(Ent_isbn.Text) | string.IsNullOrWhiteSpace(Ent_title.Text))
+            {
+                await DisplayAlert("Alert", "ISBN and/or Title are missing.", "OK");
+                return;
+            }
+
             book.Isbn = Ent_isbn.Text;
             book.Title = Ent_title.Text;
             book.Author = Ent_author.Text;
@@ -90,6 +96,15 @@ namespace MyLibraryApp
             {
                 await DisplayAlert("Error", "Error in fetching data, Enter manually.", "OK");
             }           
+        }
+
+        private void Btn_clear_Clicked(object sender, EventArgs e)
+        {
+            Ent_isbn.Text = string.Empty;
+            Ent_title.Text = string.Empty;
+            Ent_author.Text = string.Empty;
+            Ent_desc.Text = string.Empty;
+            Ent_img.Text = string.Empty;
         }
     }
 }

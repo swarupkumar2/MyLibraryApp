@@ -5,6 +5,7 @@
              Title="New Book">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Clear" Clicked="Btn_clear_Clicked"/>
         <ToolbarItem Text="Save" Clicked="Btn_save_Clicked"/>
     </ContentPage.ToolbarItems>
     
@@ -21,7 +22,7 @@
             <Label Text="Author(s):" FontSize="Small" />
             <Entry x:Name="Ent_author" FontSize="Small" />
             <Label Text="Description:" FontSize="Small" />
-            <Entry x:Name="Ent_desc" FontSize="Small" />
+            <Editor x:Name="Ent_desc" FontSize="Small" HeightRequest="150" WidthRequest="100" />
             <Label Text="Image:" FontSize="Small" />
             <Entry x:Name="Ent_img" FontSize="Small" />
         </StackLayout>

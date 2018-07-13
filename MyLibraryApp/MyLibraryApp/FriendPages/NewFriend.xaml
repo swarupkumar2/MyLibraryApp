@@ -5,6 +5,7 @@
              Title="New Friend">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Clear" Clicked="Btn_clear_Clicked"/>
         <ToolbarItem Text="Save" Clicked="Btn_save_Clicked"/>
     </ContentPage.ToolbarItems>
     

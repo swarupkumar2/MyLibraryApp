@@ -12,7 +12,8 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <SearchBar x:Name="Sbr_books" Placeholder="Enter title to search" TextChanged="Sbr_books_TextChanged" />
+                <Button x:Name="Btn_brwdlst" Clicked="Btn_brwdlst_Clicked"/>
+                <SearchBar x:Name="Sbr_books" Placeholder="Enter title or author to search" TextChanged="Sbr_books_TextChanged" />
                 <ListView x:Name="LV_bklst" ItemSelected="LV_bklst_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
