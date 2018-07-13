@@ -1,11 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyLibraryApp.BorrowBook">
+             x:Class="MyLibraryApp.BorrowBook"
+             Appearing="ContentPage_Appearing">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Select friend who wants to borrow." />
-            <Picker x:Name="Pkr_fndlst"/>
+        <StackLayout Margin="10">
+            <!--<Label Text="Select friend who wants to borrow." />-->
+            <Picker Title="Select a friend" x:Name="Pkr_fndlst" ItemDisplayBinding="{Binding FirstName}"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Current Date:"/>
+                <Label x:Name="Lbl_currdate" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Borrow for:"/>
+                <Entry x:Name="Ent_numofdays" />
+                <Label Text="days"/>
+            </StackLayout>
             <Button Text="Borrow" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

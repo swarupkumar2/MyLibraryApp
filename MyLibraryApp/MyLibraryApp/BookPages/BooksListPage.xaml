@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyLibraryApp"
              x:Class="MyLibraryApp.BooksListPage"
              Appearing="ContentPage_Appearing">
 
@@ -9,15 +10,18 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <StackLayout>
-            <SearchBar x:Name="Sbr_books" Placeholder="Enter title to search" TextChanged="Sbr_books_TextChanged" />
-            <ListView x:Name="LV_bklst" ItemSelected="LV_bklst_ItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Title}" Detail="{Binding Author}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <SearchBar x:Name="Sbr_books" Placeholder="Enter title to search" TextChanged="Sbr_books_TextChanged" />
+                <ListView x:Name="LV_bklst" ItemSelected="LV_bklst_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageCell ImageSource="{Binding Image}"  Text="{Binding Title}" Detail="{Binding Author}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>

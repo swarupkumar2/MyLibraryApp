@@ -1,9 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyLibraryApp"
              x:Class="MyLibraryApp.FriendDetail"
              Appearing="ContentPage_Appearing"
              Title="{Binding FirstName}">
+
+    <ContentPage.Resources>
+        <local:IsbnToTitleConverter x:Key="IsbnToTitleConverter" />
+    </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="Btn_action" Clicked="Btn_action_Clicked"/>
@@ -11,23 +16,43 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal">
-                <Label Text="First Name:"/>
-                <Label x:Name="Lbl_fname" Text="{Binding FirstName}"/>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Margin="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="First Name:"/>
+                    <Label x:Name="Lbl_fname" Text="{Binding FirstName}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Last Name:"/>
+                    <Label x:Name="Lbl_lname" Text="{Binding LastName}"/>
+                </StackLayout>
+                <StackLayout x:Name="Sly_editable">
+
+                    <StackLayout x:Name="Sly_label">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Phone:"/>
+                            <Label x:Name="Lbl_phone" Text="{Binding Phone}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Email:"/>
+                            <Label x:Name="Lbl_email" Text="{Binding Email}"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout x:Name="Sly_entry">
+                        <Label Text="Phone:"/>
+                        <Entry x:Name="Ent_phone" FontSize="Small"/>
+                        <Label Text="Email:"/>
+                        <Entry x:Name="Ent_email" FontSize="Small" />
+                    </StackLayout>
+
+                </StackLayout>
+                <Label Text="Currently borrowed:"/>
+                <ListView ItemsSource="{Binding BookList, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}" />
+                <Label Text="Previously borrowed:"/>
+                <ListView ItemsSource="{Binding History, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}" />
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Last Name:"/>
-                <Label x:Name="Lbl_lname" Text="{Binding LastName}"/>
-            </StackLayout>
-            <StackLayout x:Name="Sly_editable">
-                <Label Text="Phone:"/>
-                <!--<Label x:Name="Lbl_phone" Text="{Binding Phone}"/>-->
-                <Entry x:Name="Lbl_phone" FontSize="Small" />
-                <Label Text="Email:"/>
-                <!--<Label x:Name="Lbl_email" Text="{Binding Email}"/>-->
-                <Entry x:Name="Lbl_email" FontSize="Small" />
-            </StackLayout>
-        </StackLayout>
+        </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>

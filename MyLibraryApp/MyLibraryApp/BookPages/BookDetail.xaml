@@ -33,6 +33,26 @@
                     <Label Text="Description:"/>
                     <Label Text="{Binding Description}"/>
                 </StackLayout>
+                
+                <StackLayout x:Name="Sly_borrowdata">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Borrowed by:"/>
+                        <Label x:Name="Lbl_friend"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Contact:"/>
+                        <Label x:Name="Lbl_contact"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Borrowed on:"/>
+                        <Label x:Name="Lbl_brrwon"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Return till:"/>
+                        <Label x:Name="Lbl_rtntll"/>
+                    </StackLayout>
+                </StackLayout>
+                
             </StackLayout>
         </ScrollView>
         

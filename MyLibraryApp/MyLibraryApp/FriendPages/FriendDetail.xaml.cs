@@ -20,6 +20,8 @@ namespace MyLibraryApp
             BindingContext = this.friend = friend;
             Sly_editable.IsEnabled = false;
             Btn_action.Text = "Edit";
+            Sly_label.IsVisible = true;
+            Sly_entry.IsVisible = false;
 
         }
 
@@ -37,13 +39,19 @@ namespace MyLibraryApp
             {
                 Sly_editable.IsEnabled = true;
                 Btn_action.Text = "Save";
+                Sly_label.IsVisible = false;
+                Sly_entry.IsVisible = true;
+                Ent_phone.Text = friend.Phone;
+                Ent_email.Text = friend.Email;
             }
             else
             {
-                friend.Phone = Lbl_phone.Text;
-                friend.Email = Lbl_email.Text;
+                Lbl_phone.Text = friend.Phone = Ent_phone.Text;
+                Lbl_email.Text = friend.Email = Ent_email.Text;
                 Sly_editable.IsEnabled = false;
                 Btn_action.Text = "Edit";
+                Sly_label.IsVisible = true;
+                Sly_entry.IsVisible = false;
             }
             
             //await Navigation.PushAsync(new EditFriend(friend));
@@ -53,8 +61,10 @@ namespace MyLibraryApp
         {
             //Lbl_fname.Text = friend.FirstName;
             //Lbl_lname.Text = friend.LastName;
-            Lbl_phone.Text = friend.Phone;
-            Lbl_email.Text = friend.Email;
+
+
+            //Lbl_phone.Text = friend.Phone;
+            //Lbl_email.Text = friend.Email;
         }
     }
 }

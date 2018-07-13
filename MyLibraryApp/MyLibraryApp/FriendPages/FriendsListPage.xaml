@@ -9,22 +9,25 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <StackLayout>
-            <SearchBar x:Name="Sbr_friends" Placeholder="Enter name to search" TextChanged="Sbr_friends_TextChanged" />
-            <ListView x:Name="LV_fnlst" ItemSelected="LV_fnlst_ItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10">
-                                <!--<Image Source="{Binding Image}" />-->
-                                <Label Text="{Binding FirstName}"/>
-                                <Label Text="{Binding LastName}"/>
-                            </StackLayout>
-                        </ViewCell>
-                        <!--<TextCell Text="{Binding FirstName} " Detail="{Binding LastName}" />-->
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <SearchBar x:Name="Sbr_friends" Placeholder="Enter name to search" TextChanged="Sbr_friends_TextChanged" />
+                <ListView x:Name="LV_fnlst" ItemSelected="LV_fnlst_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10">
+                                    <!--<Image Source="{Binding Image}" />-->
+                                    <Label Text="{Binding FirstName}"/>
+                                    <Label Text="{Binding LastName}"/>
+                                </StackLayout>
+                            </ViewCell>
+                            <!--<TextCell Text="{Binding FirstName} " Detail="{Binding LastName}" />-->
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>

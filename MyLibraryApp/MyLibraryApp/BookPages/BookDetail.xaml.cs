@@ -20,8 +20,7 @@ namespace MyLibraryApp
 		{
 			InitializeComponent ();
             BindingContext = this.book = book;
-
-		}
+        }
 
         private async void Btn_delete_Clicked(object sender, EventArgs e)
         {
@@ -34,13 +33,20 @@ namespace MyLibraryApp
         private async void ContentPage_Appearing(object sender, EventArgs e)
         {
             Lbl_avail.Text = book.Availability;
+            Lbl_friend.Text = book.Friend;
+            Lbl_contact.Text = book.Contact;
+            Lbl_brrwon.Text = book.BorrowDate;
+            Lbl_rtntll.Text = book.ReturnDate;
+
             if (book.Availability == "Yes")
             {
                 Btn_action.Text = "Borrow";
+                Sly_borrowdata.IsVisible = false;
             }
             else
             {
                 Btn_action.Text = "Return";
+                Sly_borrowdata.IsVisible = true;
             }
 
             try
@@ -70,8 +76,18 @@ namespace MyLibraryApp
             }
             else
             {
+                Friend friend = (from f in App._friendlist where f.Phone.Contains(book.Contact) select f).FirstOrDefault<Friend>();
+                friend.BookList.Remove(book.Isbn);
+                friend.History.Add(book.Isbn);
+
+                book.Friend = null;
+                book.BorrowDate = null;
+                book.ReturnDate = null;
+                book.Contact = null;
                 book.Availability = Lbl_avail.Text = "Yes";
+
                 Btn_action.Text = "Borrow";
+                Sly_borrowdata.IsVisible = false;
             }
         }
     }

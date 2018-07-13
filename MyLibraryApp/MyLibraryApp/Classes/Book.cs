@@ -14,7 +14,8 @@ namespace MyLibraryApp
         public string Availability { get; set; }
         public string Friend { get; set; }
         public string Contact { get; set; }
-        public DateTime? BorrowDate { get; set; }
-        public DateTime? ReturnDate { get; set; }
+        public string BorrowDate { get; set; }
+        public string ReturnDate { get; set; }
+        
     }
 }
