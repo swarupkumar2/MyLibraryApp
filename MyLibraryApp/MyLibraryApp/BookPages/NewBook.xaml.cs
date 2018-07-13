@@ -79,11 +79,12 @@ namespace MyLibraryApp
                 //Ent_desc.Text = localbook.Description;
                 Ent_img.Text = localbook.ImageUrl;
 
+                string tempAuth = "";
                 foreach(var author in localbook.Authors)
                 {
-                    Ent_author.Text = Ent_author.Text + author.Name + ", ";
+                    tempAuth = tempAuth + author.Name + ", ";
                 }
-                Ent_author.Text = Ent_author.Text.Trim().Trim(',');
+                Ent_author.Text = tempAuth.Trim().Trim(',');
             }
             catch
             {
