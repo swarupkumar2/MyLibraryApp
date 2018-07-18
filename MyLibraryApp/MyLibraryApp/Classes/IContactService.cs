@@ -6,6 +6,6 @@ namespace MyLibraryApp
 {
     public interface IContactService
     {
-        List<Friend> GetAllContacts();
+        List<Phonebook> GetAllContacts();
     }
 }

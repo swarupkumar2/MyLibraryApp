@@ -15,7 +15,7 @@ namespace MyLibraryApp
 	public partial class NewFriend : ContentPage
 	{
         Friend friend;
-        List<Friend> contacts = new List<Friend>();
+        List<Phonebook> contacts = new List<Phonebook>();
 
         public NewFriend ()
 		{
@@ -56,7 +56,7 @@ namespace MyLibraryApp
             Slt_contacts.IsVisible = false;
         }
 
-        private void Ent_name_TextChanged(object sender, TextChangedEventArgs e)
+        private void Sbr_phonebook_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.NewTextValue))
             {
@@ -64,8 +64,8 @@ namespace MyLibraryApp
                 return;
             }
             Slt_contacts.IsVisible = true;
-            Lvw_contacts.ItemsSource = contacts.Where(f => (f.FirstName.ToLower().Contains(e.NewTextValue.ToLower())) | (f.LastName.ToLower().Contains(e.NewTextValue.ToLower())));
-            var list = contacts.Where(f => (f.FirstName.ToLower().Contains(e.NewTextValue.ToLower())) | (f.LastName.ToLower().Contains(e.NewTextValue.ToLower()))).FirstOrDefault();
+            Lvw_contacts.ItemsSource = contacts.Where(p => (p.DisplayName.ToLower().Contains(e.NewTextValue.ToLower())));
+            var list = contacts.Where(p => (p.DisplayName.ToLower().Contains(e.NewTextValue.ToLower()))).FirstOrDefault();
             if (list == null)
             {
                 Slt_contacts.IsVisible = false;
@@ -74,12 +74,13 @@ namespace MyLibraryApp
 
         private void Lvw_contacts_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var localfriend = Lvw_contacts.SelectedItem as Friend;
+            var localfriend = Lvw_contacts.SelectedItem as Phonebook;
             Ent_phone.Text = localfriend.Phone;
             Ent_fname.Text = localfriend.FirstName;
             Ent_lname.Text = localfriend.LastName;
 
             Slt_contacts.IsVisible = false;
         }
+
     }
 }

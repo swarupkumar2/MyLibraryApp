@@ -12,12 +12,7 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Phone:" FontSize="Small" />
-            <Entry x:Name="Ent_phone" FontSize="Small" Margin="0" />
-            <Label Text="First Name:" FontSize="Small" />
-            <Entry x:Name="Ent_fname" FontSize="Small" TextChanged="Ent_name_TextChanged" />
-            <Label Text="Last Name:" FontSize="Small" />
-            <Entry x:Name="Ent_lname" FontSize="Small" TextChanged="Ent_name_TextChanged" />
+            <SearchBar x:Name="Sbr_phonebook" Placeholder="Enter name to search phonebook" TextChanged="Sbr_phonebook_TextChanged"/>
             <StackLayout x:Name="Slt_contacts">
                 <ListView x:Name="Lvw_contacts" ItemSelected="Lvw_contacts_ItemSelected">
                     <ListView.ItemTemplate>
@@ -35,6 +30,12 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
+            <Label Text="First Name:" FontSize="Small" />
+            <Entry x:Name="Ent_fname" FontSize="Small" />
+            <Label Text="Last Name:" FontSize="Small" />
+            <Entry x:Name="Ent_lname" FontSize="Small" />
+            <Label Text="Phone:" FontSize="Small" />
+            <Entry x:Name="Ent_phone" FontSize="Small" Margin="0" />
             <Label Text="Email:" FontSize="Small" />
             <Entry x:Name="Ent_email" FontSize="Small" Margin="0" />
         </StackLayout>

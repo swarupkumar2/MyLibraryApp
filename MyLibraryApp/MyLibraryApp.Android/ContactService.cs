@@ -22,9 +22,9 @@ namespace MyLibraryApp.Droid
 {
     public class ContactService :  IContactService
     {
-        public List<Friend> GetAllContacts()
+        public List<Phonebook> GetAllContacts()
         {
-            var phoneContacts = new List<Friend>();
+            var phoneContacts = new List<Phonebook>();
 
             try
             {
@@ -40,24 +40,23 @@ namespace MyLibraryApp.Droid
                                 string phoneNumber = phones.GetString(phones.GetColumnIndex(ContactsContract.CommonDataKinds.Phone.Number));
 
                                 string[] words = name.Split(' ');
-                                var contact = new Friend();
+                                var contact = new Phonebook();
                                 contact.FirstName = words[0];
                                 if (words.Length > 1)
                                     contact.LastName = words[1];
                                 else
                                     contact.LastName = ""; //no last name
                                 contact.Phone = phoneNumber;
+                                contact.DisplayName = name;
                                 phoneContacts.Add(contact);
                             }
                             catch
                             {
                                 return phoneContacts;
-                                //something wrong with one contact, may be display name is completely empty, decide what to do
                             }
                         }
                         phones.Close();
                     }
-                    // if we get here, we can't access the contacts. Consider throwing an exception to display to the user
                 }
             }
             catch
