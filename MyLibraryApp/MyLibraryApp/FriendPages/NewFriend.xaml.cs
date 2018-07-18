@@ -15,7 +15,9 @@ namespace MyLibraryApp
 	public partial class NewFriend : ContentPage
 	{
         Friend friend;
-		public NewFriend ()
+        List<Friend> contacts = new List<Friend>();
+
+        public NewFriend ()
 		{
 			InitializeComponent ();
             BindingContext = friend = new Friend();
@@ -40,23 +42,44 @@ namespace MyLibraryApp
             await Navigation.PopAsync();
         }
 
-        private void Btn_contact_Clicked(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Btn_populate_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
         private void Btn_clear_Clicked(object sender, EventArgs e)
         {
             Ent_phone.Text = string.Empty;
             Ent_fname.Text = string.Empty;
             Ent_lname.Text = string.Empty;
             Ent_email.Text = string.Empty;
-            //Ent_img.Text = string.Empty;
+        }
+
+        private void ContentPage_Appearing(object sender, EventArgs e)
+        {
+            contacts = DependencyService.Get<IContactService>().GetAllContacts();
+            Slt_contacts.IsVisible = false;
+        }
+
+        private void Ent_name_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                Slt_contacts.IsVisible = false;
+                return;
+            }
+            Slt_contacts.IsVisible = true;
+            Lvw_contacts.ItemsSource = contacts.Where(f => (f.FirstName.ToLower().Contains(e.NewTextValue.ToLower())) | (f.LastName.ToLower().Contains(e.NewTextValue.ToLower())));
+            var list = contacts.Where(f => (f.FirstName.ToLower().Contains(e.NewTextValue.ToLower())) | (f.LastName.ToLower().Contains(e.NewTextValue.ToLower()))).FirstOrDefault();
+            if (list == null)
+            {
+                Slt_contacts.IsVisible = false;
+            }
+        }
+
+        private void Lvw_contacts_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var localfriend = Lvw_contacts.SelectedItem as Friend;
+            Ent_phone.Text = localfriend.Phone;
+            Ent_fname.Text = localfriend.FirstName;
+            Ent_lname.Text = localfriend.LastName;
+
+            Slt_contacts.IsVisible = false;
         }
     }
 }

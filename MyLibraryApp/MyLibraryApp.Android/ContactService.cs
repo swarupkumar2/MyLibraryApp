@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Android;
+using Android.App;
+using Android.Content;
+using Android.Content.PM;
+using Android.OS;
+using Android.Provider;
+using Android.Runtime;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
+using Android.Views;
+using Android.Widget;
+using MyLibraryApp.Droid;
+using Xamarin.Forms;
+
+[assembly: Dependency(typeof(ContactService))]
+
+namespace MyLibraryApp.Droid
+{
+    public class ContactService :  IContactService
+    {
+        public IntPtr Handle => throw new NotImplementedException();
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Friend> GetAllContacts()
+        {
+            var phoneContacts = new List<Friend>();
+
+            using (var phones = Android.App.Application.Context.ContentResolver.Query(ContactsContract.CommonDataKinds.Phone.ContentUri, null, null, null, null))
+            {
+                if (phones != null)
+                {
+                    while (phones.MoveToNext())
+                    {
+                        try
+                        {
+                            string name = phones.GetString(phones.GetColumnIndex(ContactsContract.Contacts.InterfaceConsts.DisplayName));
+                            string phoneNumber = phones.GetString(phones.GetColumnIndex(ContactsContract.CommonDataKinds.Phone.Number));
+
+                            string[] words = name.Split(' ');
+                            var contact = new Friend();
+                            contact.FirstName = words[0];
+                            if (words.Length > 1)
+                                contact.LastName = words[1];
+                            else
+                                contact.LastName = ""; //no last name
+                            contact.Phone = phoneNumber;
+                            phoneContacts.Add(contact);
+                        }
+                        catch
+                        {
+                            return phoneContacts;
+                            //something wrong with one contact, may be display name is completely empty, decide what to do
+                        }
+                    }
+                    phones.Close();
+                }
+                // if we get here, we can't access the contacts. Consider throwing an exception to display to the user
+            }
+
+            return phoneContacts;
+        }
+
+    }
+}

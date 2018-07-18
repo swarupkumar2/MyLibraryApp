@@ -56,15 +56,5 @@ namespace MyLibraryApp
             
             //await Navigation.PushAsync(new EditFriend(friend));
         }
-
-        private void ContentPage_Appearing(object sender, EventArgs e)
-        {
-            //Lbl_fname.Text = friend.FirstName;
-            //Lbl_lname.Text = friend.LastName;
-
-
-            //Lbl_phone.Text = friend.Phone;
-            //Lbl_email.Text = friend.Email;
-        }
     }
 }

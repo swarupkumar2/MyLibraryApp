@@ -6,11 +6,12 @@
              Title="Welcome">
     
   <StackLayout Padding="10">
-        <Label Text="This is the welcome page." VerticalOptions="Start" 
+        <Label x:Name="Lbl_welcomeTxt" VerticalOptions="Start" 
                 HorizontalOptions="Center"/>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Label Text="Current status of My Library:"/>
             <StackLayout Orientation="Horizontal">
-                <Label Text="Number of books available for borrowing:"/>
+                <Label Text="Number of books borrowed:"/>
                 <Label x:Name="Lbl_avlbkcnt"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
@@ -22,6 +23,6 @@
                 <Label x:Name="Lbl_ttlfncnt"/>
             </StackLayout>
         </StackLayout>
-        
+
     </StackLayout>
 </ContentPage>

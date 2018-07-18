@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyLibraryApp.NewFriend"
+             Appearing="ContentPage_Appearing"
              Title="New Friend">
 
     <ContentPage.ToolbarItems>
@@ -13,18 +14,29 @@
         <StackLayout>
             <Label Text="Phone:" FontSize="Small" />
             <Entry x:Name="Ent_phone" FontSize="Small" Margin="0" />
-            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Button x:Name="Btn_contact" Text="contacts" Clicked="Btn_contact_Clicked"/>
-                <Button x:Name="Btn_populate" Text="populate" Clicked="Btn_populate_Clicked"/>
-            </StackLayout>-->
             <Label Text="First Name:" FontSize="Small" />
-            <Entry x:Name="Ent_fname" FontSize="Small" />
+            <Entry x:Name="Ent_fname" FontSize="Small" TextChanged="Ent_name_TextChanged" />
             <Label Text="Last Name:" FontSize="Small" />
-            <Entry x:Name="Ent_lname" FontSize="Small" Margin="0" />
+            <Entry x:Name="Ent_lname" FontSize="Small" TextChanged="Ent_name_TextChanged" />
+            <StackLayout x:Name="Slt_contacts">
+                <ListView x:Name="Lvw_contacts" ItemSelected="Lvw_contacts_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10">
+                                    <!--<Image Source="{Binding Image}" />-->
+                                    <Label Text="{Binding FirstName}"/>
+                                    <Label Text="{Binding LastName}"/>
+                                    <Label Text="{Binding Phone}"/>
+                                </StackLayout>
+                            </ViewCell>
+                            <!--<TextCell Text="{Binding FirstName} " Detail="{Binding LastName}" />-->
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
             <Label Text="Email:" FontSize="Small" />
             <Entry x:Name="Ent_email" FontSize="Small" Margin="0" />
-            <!--<Label Text="Photo:" FontSize="Small" />
-            <Entry x:Name="Ent_img" FontSize="Small" Margin="0" />-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

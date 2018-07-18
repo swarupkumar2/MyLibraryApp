@@ -12,8 +12,12 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Button x:Name="Btn_brwdlst" Clicked="Btn_brwdlst_Clicked"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button x:Name="Btn_brwdlst" Clicked="Btn_brwdlst_Clicked" WidthRequest="150"/>
+                    <Button x:Name="Btn_duelst" Text="Overdue books" Clicked="Btn_duelst_Clicked" WidthRequest="150"/>
+                </StackLayout>
                 <SearchBar x:Name="Sbr_books" Placeholder="Enter title or author to search" TextChanged="Sbr_books_TextChanged" />
+                <Label x:Name="Lbl_comment"/>
                 <ListView x:Name="LV_bklst" ItemSelected="LV_bklst_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
