@@ -22,47 +22,47 @@ namespace MyLibraryApp.Droid
 {
     public class ContactService :  IContactService
     {
-        public IntPtr Handle => throw new NotImplementedException();
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Friend> GetAllContacts()
         {
             var phoneContacts = new List<Friend>();
 
-            using (var phones = Android.App.Application.Context.ContentResolver.Query(ContactsContract.CommonDataKinds.Phone.ContentUri, null, null, null, null))
+            try
             {
-                if (phones != null)
+                using (var phones = Android.App.Application.Context.ContentResolver.Query(ContactsContract.CommonDataKinds.Phone.ContentUri, null, null, null, null))
                 {
-                    while (phones.MoveToNext())
+                    if (phones != null)
                     {
-                        try
+                        while (phones.MoveToNext())
                         {
-                            string name = phones.GetString(phones.GetColumnIndex(ContactsContract.Contacts.InterfaceConsts.DisplayName));
-                            string phoneNumber = phones.GetString(phones.GetColumnIndex(ContactsContract.CommonDataKinds.Phone.Number));
+                            try
+                            {
+                                string name = phones.GetString(phones.GetColumnIndex(ContactsContract.Contacts.InterfaceConsts.DisplayName));
+                                string phoneNumber = phones.GetString(phones.GetColumnIndex(ContactsContract.CommonDataKinds.Phone.Number));
 
-                            string[] words = name.Split(' ');
-                            var contact = new Friend();
-                            contact.FirstName = words[0];
-                            if (words.Length > 1)
-                                contact.LastName = words[1];
-                            else
-                                contact.LastName = ""; //no last name
-                            contact.Phone = phoneNumber;
-                            phoneContacts.Add(contact);
+                                string[] words = name.Split(' ');
+                                var contact = new Friend();
+                                contact.FirstName = words[0];
+                                if (words.Length > 1)
+                                    contact.LastName = words[1];
+                                else
+                                    contact.LastName = ""; //no last name
+                                contact.Phone = phoneNumber;
+                                phoneContacts.Add(contact);
+                            }
+                            catch
+                            {
+                                return phoneContacts;
+                                //something wrong with one contact, may be display name is completely empty, decide what to do
+                            }
                         }
-                        catch
-                        {
-                            return phoneContacts;
-                            //something wrong with one contact, may be display name is completely empty, decide what to do
-                        }
+                        phones.Close();
                     }
-                    phones.Close();
+                    // if we get here, we can't access the contacts. Consider throwing an exception to display to the user
                 }
-                // if we get here, we can't access the contacts. Consider throwing an exception to display to the user
+            }
+            catch
+            {
+                return phoneContacts;
             }
 
             return phoneContacts;
