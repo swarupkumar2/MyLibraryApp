@@ -25,7 +25,10 @@
               Grid.Column="1"
               Grid.Row="2"
               Text="My Library"
-              Style="{DynamicResource SubtitleStyle}"/>
+              Style="{DynamicResource SubtitleStyle}"
+              FontAttributes="Bold"
+              FontSize="Large"
+              TextColor="White"/>
         </Grid>
       </ListView.Header>
       <ListView.ItemTemplate>
@@ -35,7 +38,8 @@
               <Label VerticalOptions="FillAndExpand" 
                     VerticalTextAlignment="Center" 
                     Text="{Binding Title}" 
-                    FontSize="24"/>
+                    FontSize="20"
+                     TextColor="DeepSkyBlue"/>
             </StackLayout>
           </ViewCell>
         </DataTemplate>

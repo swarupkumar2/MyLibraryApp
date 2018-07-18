@@ -33,7 +33,7 @@ namespace MyLibraryApp
             {
                 MenuItems = new ObservableCollection<MasterDetailMenuItem>(new[]
                 {
-                    new MasterDetailMenuItem { Id = 0, Title = "Welcome", TargetType = typeof(Welcome) },
+                    new MasterDetailMenuItem { Id = 0, Title = "Home", TargetType = typeof(Welcome) },
                     new MasterDetailMenuItem { Id = 1, Title = "Books", TargetType = typeof(BooksListPage) },
                     new MasterDetailMenuItem { Id = 2, Title = "Friends", TargetType = typeof(FriendsListPage) },
                 });

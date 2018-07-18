@@ -10,31 +10,32 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Orientation="Vertical" Margin="10">
-                <Image x:Name="Img_book" HeightRequest="300" Aspect="AspectFit"  WidthRequest="150"/>
+        <ScrollView Padding="20">
+            <StackLayout Orientation="Vertical" Spacing="10">
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Title:"/>
-                    <Label Text="{Binding Title}"/>
+                    <Label Text="{Binding Title}" FontSize="Medium" TextColor="DeepSkyBlue" FontAttributes="Bold"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Author(s):"/>
-                    <Label Text="{Binding Author}"/>
+                    <Label Text="by" FontAttributes="Italic" TextColor="Black"/>
+                    <Label Text="{Binding Author}" FontAttributes="Bold"/>
+                </StackLayout>
+                <Image x:Name="Img_book" HeightRequest="300" Aspect="AspectFit"  WidthRequest="150" Margin="0,0,0,10"/>
+                <Label Text="Book Details" FontAttributes="Bold" TextColor="DeepSkyBlue"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Is Available:" FontAttributes="Bold"/>
+                    <Label x:Name="Lbl_avail" FontAttributes="Bold"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="ISBN:"/>
                     <Label Text="{Binding Isbn}"/>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Is Available:"/>
-                    <Label x:Name="Lbl_avail" FontAttributes="Bold"/>
-                </StackLayout>
                 <StackLayout Orientation="Vertical">
-                    <Label Text="Description:"/>
+                    <Label Text="DESCRIPTION:"/>
                     <Label Text="{Binding Description}"/>
                 </StackLayout>
                 
                 <StackLayout x:Name="Sly_borrowdata">
+                    <Label Text="Borrow Details" FontAttributes="Bold" TextColor="DeepSkyBlue"/>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Borrowed by:"/>
                         <Label x:Name="Lbl_friend"/>

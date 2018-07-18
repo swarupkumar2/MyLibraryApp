@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MyLibraryApp"
-             x:Class="MyLibraryApp.FriendDetail"
-             Title="{Binding FirstName}">
+             x:Class="MyLibraryApp.FriendDetail">
 
     <ContentPage.Resources>
         <local:IsbnToTitleConverter x:Key="IsbnToTitleConverter" />
@@ -15,43 +14,43 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Orientation="Vertical" Margin="10">
-                <StackLayout Orientation="Horizontal">
+        <!--<ScrollView>-->
+            <StackLayout Orientation="Vertical" Padding="20" Spacing="10">
+            <Label Text="Contact details" TextColor="DeepSkyBlue" FontAttributes="Bold"/>
+            <StackLayout Orientation="Horizontal">
                     <Label Text="First Name:"/>
-                    <Label x:Name="Lbl_fname" Text="{Binding FirstName}"/>
+                <Label x:Name="Lbl_fname" Text="{Binding FirstName}" FontAttributes="Bold"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Last Name:"/>
-                    <Label x:Name="Lbl_lname" Text="{Binding LastName}"/>
+                <Label x:Name="Lbl_lname" Text="{Binding LastName}" FontAttributes="Bold"/>
                 </StackLayout>
-                <StackLayout x:Name="Sly_editable">
+            <StackLayout x:Name="Sly_editable">
 
-                    <StackLayout x:Name="Sly_label">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Phone:"/>
-                            <Label x:Name="Lbl_phone" Text="{Binding Phone}"/>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Email:"/>
-                            <Label x:Name="Lbl_email" Text="{Binding Email}"/>
-                        </StackLayout>
-                    </StackLayout>
-
-                    <StackLayout x:Name="Sly_entry">
+                <StackLayout x:Name="Sly_label">
+                    <StackLayout Orientation="Horizontal">
                         <Label Text="Phone:"/>
-                        <Entry x:Name="Ent_phone" FontSize="Small"/>
-                        <Label Text="Email:"/>
-                        <Entry x:Name="Ent_email" FontSize="Small" />
+                        <Label x:Name="Lbl_phone" Text="{Binding Phone}" FontAttributes="Bold"/>
                     </StackLayout>
-
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Email:"/>
+                        <Label x:Name="Lbl_email" Text="{Binding Email}" FontAttributes="Bold"/>
+                    </StackLayout>
                 </StackLayout>
-                <Label Text="Currently borrowed:"/>
-                <ListView ItemsSource="{Binding BookList, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}" />
-                <Label Text="Previously borrowed:"/>
-                <ListView ItemsSource="{Binding History, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}" />
+
+                <StackLayout x:Name="Sly_entry">
+                    <Label Text="Phone:"/>
+                    <Entry x:Name="Ent_phone" FontSize="Small"/>
+                    <Label Text="Email:"/>
+                    <Entry x:Name="Ent_email" FontSize="Small" />
+                </StackLayout>
             </StackLayout>
-        </ScrollView>
-        
+            <Label/>
+            <Label Text="Currently borrowed" TextColor="DeepSkyBlue" FontAttributes="Bold"/>
+            <ListView x:Name="LV_bklst" ItemsSource="{Binding BookList, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}" />
+            <Label Text="Previously borrowed" TextColor="DeepSkyBlue" FontAttributes="Bold"/>
+            <ListView x:Name="LV_hstry" ItemsSource="{Binding History, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}" />
+            </StackLayout>
+        <!--</ScrollView>-->
     </ContentPage.Content>
 </ContentPage>

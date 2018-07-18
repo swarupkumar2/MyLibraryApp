@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyLibraryApp.NewBook"
-             Title="New Book">
+             Title="Add Book">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Clear" Clicked="Btn_clear_Clicked"/>
@@ -10,17 +10,17 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="20">
             <Label Text="ISBN:" FontSize="Small" />
-            <Entry x:Name="Ent_isbn" FontSize="Small" />
+            <Entry x:Name="Ent_isbn" FontSize="Small" Placeholder="13-digit ISBN" />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Button x:Name="Btn_scan" Text="Scan" Clicked="Btn_scan_Clicked"/>
-                <Button x:Name="Btn_populate" Text="Populate" Clicked="Btn_populate_Clicked"/>
+                <Button x:Name="Btn_scan" Text="Scan" Clicked="Btn_scan_Clicked" TextColor="DeepSkyBlue"/>
+                <Button x:Name="Btn_populate" Text="Populate" Clicked="Btn_populate_Clicked" TextColor="DeepSkyBlue"/>
             </StackLayout>
             <Label Text="Title:" FontSize="Small" />
             <Entry x:Name="Ent_title" FontSize="Small" />
             <Label Text="Author(s):" FontSize="Small" />
-            <Entry x:Name="Ent_author" FontSize="Small" />
+            <Entry x:Name="Ent_author" FontSize="Small" Placeholder="e.g. John Doe, Alex Muller, ..."/>
             <Label Text="Description:" FontSize="Small" />
             <Editor x:Name="Ent_desc" FontSize="Small" HeightRequest="150" WidthRequest="100" />
             <Label Text="Image:" FontSize="Small" />

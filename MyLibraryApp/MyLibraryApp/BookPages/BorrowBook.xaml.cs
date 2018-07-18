@@ -16,7 +16,9 @@ namespace MyLibraryApp
         internal int Days { get; set; } = 0;
 
         Book book;
-		public BorrowBook (Book book)
+        Friend friend;
+
+        public BorrowBook (Book book)
 		{
 			InitializeComponent ();
             BindingContext = this.book = book;
@@ -38,7 +40,7 @@ namespace MyLibraryApp
             }
             book.ReturnDate = Date.AddDays(Days).ToLongDateString();
 
-            Friend friend = (from f in App._friendlist where f.Phone.Contains((Pkr_fndlst.SelectedItem as Friend).Phone) select f).FirstOrDefault<Friend>(); //Pkr_fndlst.SelectedItem as Friend;
+            //friend = (from f in App._friendlist where f.Phone.Contains((Pkr_fndlst.SelectedItem as Friend).Phone) select f).FirstOrDefault<Friend>();
             friend.BookList.Add(book.Isbn);
             book.Friend = friend.FirstName + " " + friend.LastName;
             book.Contact = friend.Phone;
@@ -51,6 +53,32 @@ namespace MyLibraryApp
         {
             Pkr_fndlst.ItemsSource = App._friendlist;
             Lbl_currdate.Text = Date.ToLongDateString();
+            Lbl_bktitle.Text = book.Title;
+            Lbl_bkauth.Text = book.Author;
+
+            Slt_frndetail.IsVisible = false;
+        }
+
+        private void Pkr_fndlst_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(Pkr_fndlst.SelectedItem == null)
+            {
+                return;
+            }
+
+            friend = (from f in App._friendlist where f.Phone.Contains((Pkr_fndlst.SelectedItem as Friend).Phone) select f).FirstOrDefault<Friend>();
+            Slt_frndetail.IsVisible = true;
+            Lbl_fname.Text = friend.FirstName;
+            Lbl_lname.Text = friend.LastName;
+            Lbl_contact.Text = friend.Phone;
+
+        }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Pkr_fndlst.SelectedItem = null;
+            Ent_numofdays.Text = string.Empty;
+            Slt_frndetail.IsVisible = false;
         }
     }
 }

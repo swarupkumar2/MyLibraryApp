@@ -3,24 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyLibraryApp.Welcome"
              Appearing="ContentPage_Appearing"
-             Title="Welcome">
+             Title="Home">
     
-  <StackLayout Padding="10">
+  <StackLayout Padding="20">
+        <Label Text="Welcome to My Library!!!" HorizontalOptions="Center" VerticalOptions="Start" FontAttributes="Bold" TextColor="DeepSkyBlue" FontSize="28"/>
         <Label x:Name="Lbl_welcomeTxt" VerticalOptions="Start" 
-                HorizontalOptions="Center"/>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-            <Label Text="Current status of My Library:"/>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Number of books borrowed:"/>
-                <Label x:Name="Lbl_avlbkcnt"/>
+                HorizontalOptions="Center" FontSize="Medium"/>
+        <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="10,70,10,10" Spacing="20">
+            <Label Text="Current status of My Library:" FontAttributes="Bold" FontSize="Large" TextColor="DeepSkyBlue" HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="No. of books borrowed:" FontSize="Medium"/>
+                <Label x:Name="Lbl_avlbkcnt" FontAttributes="Bold" FontSize="Medium"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Total number of books:"/>
-                <Label x:Name="Lbl_ttlbkcnt"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Total number of books:" FontSize="Medium"/>
+                <Label x:Name="Lbl_ttlbkcnt" FontAttributes="Bold" FontSize="Medium"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Total number of friends:"/>
-                <Label x:Name="Lbl_ttlfncnt"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Total number of friends:" FontSize="Medium"/>
+                <Label x:Name="Lbl_ttlfncnt" FontAttributes="Bold" FontSize="Medium"/>
             </StackLayout>
         </StackLayout>
 

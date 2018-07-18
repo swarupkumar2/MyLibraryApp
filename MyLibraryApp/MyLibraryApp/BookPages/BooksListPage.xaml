@@ -11,17 +11,17 @@
     
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button x:Name="Btn_brwdlst" Clicked="Btn_brwdlst_Clicked" WidthRequest="150"/>
-                    <Button x:Name="Btn_duelst" Text="Overdue books" Clicked="Btn_duelst_Clicked" WidthRequest="150"/>
+            <StackLayout Padding="10" Spacing="10">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                    <Button x:Name="Btn_brwdlst" Clicked="Btn_brwdlst_Clicked" WidthRequest="170" TextColor="DeepSkyBlue"/>
+                    <Button x:Name="Btn_duelst" Text="Overdue books" Clicked="Btn_duelst_Clicked" WidthRequest="170" TextColor="DeepSkyBlue"/>
                 </StackLayout>
-                <SearchBar x:Name="Sbr_books" Placeholder="Enter title or author to search" TextChanged="Sbr_books_TextChanged" />
-                <Label x:Name="Lbl_comment"/>
+                <SearchBar x:Name="Sbr_books" Placeholder="Enter title or author to search" TextChanged="Sbr_books_TextChanged" Margin="0,20,0,10"/>
+                <Label x:Name="Lbl_comment" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Medium" Margin="0,20,0,10"/>
                 <ListView x:Name="LV_bklst" ItemSelected="LV_bklst_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ImageCell ImageSource="{Binding Image}"  Text="{Binding Title}" Detail="{Binding Author}" />
+                            <ImageCell ImageSource="{Binding Image}"  Text="{Binding Title}" Detail="{Binding Author}" TextColor="DeepSkyBlue" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

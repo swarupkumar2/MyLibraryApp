@@ -3,22 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyLibraryApp.BorrowBook"
              Appearing="ContentPage_Appearing"
-             Title="Borrow Details">
+             Title="Borrow Form">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Clear" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <StackLayout Margin="10">
-            <!--<Label Text="Select friend who wants to borrow." />-->
-            <Picker Title="Select a friend" x:Name="Pkr_fndlst" ItemDisplayBinding="{Binding FirstName}"/>
+        <StackLayout Padding="20" Spacing="10">
+            <Label x:Name="Lbl_bktitle" FontSize="Medium" TextColor="DeepSkyBlue" FontAttributes="Bold" />
             <StackLayout Orientation="Horizontal">
-                <Label Text="Current Date:"/>
+                <Label Text="by" FontAttributes="Italic" TextColor="Black"/>
+                <Label x:Name="Lbl_bkauth" FontAttributes="Bold"/>
+            </StackLayout>
+            <Label/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Today's Date:"/>
                 <Label x:Name="Lbl_currdate" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="Borrow for:"/>
-                <Entry x:Name="Ent_numofdays" />
-                <Label Text="days"/>
+                <Label Text="Borrow for:" VerticalOptions="Center"/>
+                <Entry x:Name="Ent_numofdays" WidthRequest="50" />
+                <Label Text="days" VerticalOptions="Center"/>
             </StackLayout>
-            <Button Text="Borrow" Clicked="Button_Clicked"/>
+            <Label/>
+            <Label Text="Friend Details:" TextColor="DeepSkyBlue" FontAttributes="Bold"/>
+            <Picker Title="Select a friend" x:Name="Pkr_fndlst" ItemDisplayBinding="{Binding FirstName}" SelectedIndexChanged="Pkr_fndlst_SelectedIndexChanged"/>
+            <StackLayout x:Name="Slt_frndetail">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="First Name:"/>
+                    <Label x:Name="Lbl_fname"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Last Name:"/>
+                    <Label x:Name="Lbl_lname"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Contact:"/>
+                    <Label x:Name="Lbl_contact"/>
+                </StackLayout>
+            </StackLayout>
+            <Label/>
+            <Button Text="Borrow" Clicked="Button_Clicked" TextColor="DeepSkyBlue"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

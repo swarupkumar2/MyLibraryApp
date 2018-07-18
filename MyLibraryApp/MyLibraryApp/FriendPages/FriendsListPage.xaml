@@ -10,16 +10,16 @@
     
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <SearchBar x:Name="Sbr_friends" Placeholder="Enter name to search" TextChanged="Sbr_friends_TextChanged" />
+            <StackLayout Padding="10" Spacing="10">
+                <SearchBar x:Name="Sbr_friends" Placeholder="Enter name to search" TextChanged="Sbr_friends_TextChanged" Margin="0,10,0,10" />
                 <ListView x:Name="LV_fnlst" ItemSelected="LV_fnlst_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10">
                                     <!--<Image Source="{Binding Image}" />-->
-                                    <Label Text="{Binding FirstName}"/>
-                                    <Label Text="{Binding LastName}"/>
+                                    <Label Text="{Binding FirstName}" TextColor="DeepSkyBlue"/>
+                                    <Label Text="{Binding LastName}" TextColor="DeepSkyBlue"/>
                                 </StackLayout>
                             </ViewCell>
                             <!--<TextCell Text="{Binding FirstName} " Detail="{Binding LastName}" />-->

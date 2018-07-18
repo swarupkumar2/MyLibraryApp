@@ -23,6 +23,7 @@ namespace MyLibraryApp
             Sly_label.IsVisible = true;
             Sly_entry.IsVisible = false;
 
+            this.Title = friend.FirstName + " " + friend.LastName;
         }
 
         private async void Btn_delete_Clicked(object sender, EventArgs e)
@@ -56,5 +57,6 @@ namespace MyLibraryApp
             
             //await Navigation.PushAsync(new EditFriend(friend));
         }
+        
     }
 }

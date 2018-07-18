@@ -22,7 +22,7 @@ namespace MyLibraryApp
 
         private void ContentPage_Appearing(object sender, EventArgs e)
         {
-            Lbl_welcomeTxt.Text = "Welcome to My Library.\n\nAn application where you can organise your books and keep a record of who has borrowed it from you and when they are due for returning.";
+            Lbl_welcomeTxt.Text = "An application where you can organise your books and keep a record of who has borrowed it from you and when they are due for returning.";
             foreach (Book book in App._booklist)
             {
                 if (book.Availability == "No")

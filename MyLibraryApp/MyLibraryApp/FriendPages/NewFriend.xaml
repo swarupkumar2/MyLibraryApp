@@ -3,41 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyLibraryApp.NewFriend"
              Appearing="ContentPage_Appearing"
-             Title="New Friend">
+             Title="Add Friend">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Clear" Clicked="Btn_clear_Clicked"/>
         <ToolbarItem Text="Save" Clicked="Btn_save_Clicked"/>
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar x:Name="Sbr_phonebook" Placeholder="Enter name to search phonebook" TextChanged="Sbr_phonebook_TextChanged"/>
-            <StackLayout x:Name="Slt_contacts">
-                <ListView x:Name="Lvw_contacts" ItemSelected="Lvw_contacts_ItemSelected">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10">
-                                    <!--<Image Source="{Binding Image}" />-->
-                                    <Label Text="{Binding FirstName}"/>
-                                    <Label Text="{Binding LastName}"/>
-                                    <Label Text="{Binding Phone}"/>
-                                </StackLayout>
-                            </ViewCell>
-                            <!--<TextCell Text="{Binding FirstName} " Detail="{Binding LastName}" />-->
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+            <SearchBar x:Name="Sbr_phonebook" Placeholder="Search phonebook by name" TextChanged="Sbr_phonebook_TextChanged" HorizontalOptions="Start" Margin="0,20,0,0"/>
+            <StackLayout Padding="20" Spacing="10">
+                <StackLayout x:Name="Slt_contacts" VerticalOptions="StartAndExpand">
+                    <ListView x:Name="Lvw_contacts" ItemSelected="Lvw_contacts_ItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                        <!--<Image Source="{Binding Image}" />-->
+                                        <Label Text="{Binding FirstName}" TextColor="DeepSkyBlue"/>
+                                        <Label Text="{Binding LastName}" TextColor="DeepSkyBlue"/>
+                                        <Label Text="{Binding Phone}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            
+            <Label Text="First Name:" FontSize="Small"/>
+                <Entry x:Name="Ent_fname" FontSize="Small"/>
+                <Label Text="Last Name:" FontSize="Small"/>
+                <Entry x:Name="Ent_lname" FontSize="Small"/>
+                <Label Text="Phone:" FontSize="Small"/>
+                <Entry x:Name="Ent_phone" FontSize="Small"/>
+                <Label Text="Email:" FontSize="Small"/>
+                <Entry x:Name="Ent_email" FontSize="Small"/>
             </StackLayout>
-            <Label Text="First Name:" FontSize="Small" />
-            <Entry x:Name="Ent_fname" FontSize="Small" />
-            <Label Text="Last Name:" FontSize="Small" />
-            <Entry x:Name="Ent_lname" FontSize="Small" />
-            <Label Text="Phone:" FontSize="Small" />
-            <Entry x:Name="Ent_phone" FontSize="Small" Margin="0" />
-            <Label Text="Email:" FontSize="Small" />
-            <Entry x:Name="Ent_email" FontSize="Small" Margin="0" />
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
