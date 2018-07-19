@@ -17,7 +17,10 @@ namespace MyLibraryApp
             foreach (string element in (ObservableCollection<string>)value)
             {
                 Book book = (from b in App._booklist where b.Isbn.Contains(element) select b).FirstOrDefault<Book>();
-                titleList.Add(book.Title);
+                if(book != null)
+                {
+                    titleList.Add(book.Title);
+                }
             }
 
             return titleList;
