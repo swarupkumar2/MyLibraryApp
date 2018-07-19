@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyLibraryApp"
              x:Class="MyLibraryApp.BorrowBook"
              Appearing="ContentPage_Appearing"
              Title="Borrow Form">
 
+    <ContentPage.Resources>
+        <local:PhoneToNameConverter x:Key="PhoneToNameConverter" />
+    </ContentPage.Resources>
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Clear" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
@@ -28,16 +33,16 @@
             </StackLayout>
             <Label/>
             <Label Text="Friend Details:" TextColor="DeepSkyBlue" FontAttributes="Bold"/>
-            <Picker Title="Select a friend" x:Name="Pkr_fndlst" ItemDisplayBinding="{Binding FirstName}" SelectedIndexChanged="Pkr_fndlst_SelectedIndexChanged"/>
+            <Picker Title="Select a friend" x:Name="Pkr_fndlst" ItemDisplayBinding="{Binding Phone, Converter={StaticResource PhoneToNameConverter}, Mode=OneWay}" SelectedIndexChanged="Pkr_fndlst_SelectedIndexChanged"/>
             <StackLayout x:Name="Slt_frndetail">
-                <StackLayout Orientation="Horizontal">
+                <!--<StackLayout Orientation="Horizontal">
                     <Label Text="First Name:"/>
                     <Label x:Name="Lbl_fname"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Last Name:"/>
                     <Label x:Name="Lbl_lname"/>
-                </StackLayout>
+                </StackLayout>-->
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Contact:"/>
                     <Label x:Name="Lbl_contact"/>

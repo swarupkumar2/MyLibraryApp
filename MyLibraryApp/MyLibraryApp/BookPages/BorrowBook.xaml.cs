@@ -68,8 +68,6 @@ namespace MyLibraryApp
 
             friend = (from f in App._friendlist where f.Phone.Contains((Pkr_fndlst.SelectedItem as Friend).Phone) select f).FirstOrDefault<Friend>();
             Slt_frndetail.IsVisible = true;
-            Lbl_fname.Text = friend.FirstName;
-            Lbl_lname.Text = friend.LastName;
             Lbl_contact.Text = friend.Phone;
 
         }
