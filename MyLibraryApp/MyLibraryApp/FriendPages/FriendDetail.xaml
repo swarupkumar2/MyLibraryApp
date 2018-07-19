@@ -47,10 +47,28 @@
             </StackLayout>
             <Label/>
             <Label Text="Currently borrowed" TextColor="DeepSkyBlue" FontAttributes="Bold"/>
-            <ListView x:Name="LV_bklst" ItemsSource="{Binding BookList, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}" />
+            <!--<ListView x:Name="LV_bklst" ItemsSource="{Binding BookList, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}" />-->
+            <ListView x:Name="LV_bklst" ItemsSource="{Binding BookList, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Label Text="{Binding Path=.}" VerticalOptions="Center"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Label Text="Previously borrowed" TextColor="DeepSkyBlue" FontAttributes="Bold"/>
-            <ListView x:Name="LV_hstry" ItemsSource="{Binding History, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}" />
-            </StackLayout>
+            <!--<ListView x:Name="LV_hstry" ItemsSource="{Binding History, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}" />-->
+            <ListView x:Name="LV_hstry" ItemsSource="{Binding History, Converter={StaticResource IsbnToTitleConverter}, Mode=OneWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Label Text="{Binding Path=.}" VerticalOptions="Center"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
         <!--</ScrollView>-->
     </ContentPage.Content>
 </ContentPage>
