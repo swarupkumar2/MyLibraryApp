@@ -48,6 +48,7 @@ namespace MyLibraryApp
             Ent_fname.Text = string.Empty;
             Ent_lname.Text = string.Empty;
             Ent_email.Text = string.Empty;
+            Sbr_phonebook.Text = string.Empty;
         }
 
         private void ContentPage_Appearing(object sender, EventArgs e)

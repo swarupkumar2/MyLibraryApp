@@ -9,6 +9,7 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Provider;
 using Android.Runtime;
+using Android.Support.Design.Widget;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Android.Views;
@@ -20,12 +21,63 @@ using Xamarin.Forms;
 
 namespace MyLibraryApp.Droid
 {
-    public class ContactService :  IContactService
+    public class ContactService : MainActivity,  IContactService
     {
+        static readonly int REQUEST_CONTACTS = 1;
+        static string[] PERMISSIONS_CONTACT = {
+            Manifest.Permission.ReadContacts    
+        };
+
+        List<Phonebook> phoneContacts = new List<Phonebook>();
+
         public List<Phonebook> GetAllContacts()
         {
-            var phoneContacts = new List<Phonebook>();
+            if ((int)Build.VERSION.SdkInt < 23)
+            {
+                GetPhoneContacts();
+            }
+            else
+            {
+                CheckPhonebookPermission();
+            }
 
+            return phoneContacts;
+        }
+
+        private void CheckPhonebookPermission()
+        {
+            if (ActivityCompat.CheckSelfPermission(Android.App.Application.Context, PERMISSIONS_CONTACT[0]) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions((Activity)Forms.Context, PERMISSIONS_CONTACT, REQUEST_CONTACTS);
+            }
+            else
+            {
+                GetPhoneContacts();
+            }
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            if (requestCode == REQUEST_CONTACTS)
+            {
+                if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
+                {
+                    GetPhoneContacts();
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
+        }
+
+
+        private void GetPhoneContacts()
+        {
             try
             {
                 using (var phones = Android.App.Application.Context.ContentResolver.Query(ContactsContract.CommonDataKinds.Phone.ContentUri, null, null, null, null))
@@ -45,14 +97,14 @@ namespace MyLibraryApp.Droid
                                 if (words.Length > 1)
                                     contact.LastName = words[1];
                                 else
-                                    contact.LastName = ""; //no last name
+                                    contact.LastName = "";
                                 contact.Phone = phoneNumber;
                                 contact.DisplayName = name;
                                 phoneContacts.Add(contact);
                             }
                             catch
                             {
-                                return phoneContacts;
+                                return;
                             }
                         }
                         phones.Close();
@@ -61,10 +113,10 @@ namespace MyLibraryApp.Droid
             }
             catch
             {
-                return phoneContacts;
+                return;
             }
 
-            return phoneContacts;
+            return;
         }
 
     }

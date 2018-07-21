@@ -4,8 +4,8 @@
              x:Class="MyLibraryApp.Welcome"
              Appearing="ContentPage_Appearing"
              Title="Home">
-    
-  <StackLayout Padding="20">
+
+    <StackLayout Padding="20">
         <Label Text="Welcome to My Library!!!" HorizontalOptions="Center" VerticalOptions="Start" FontAttributes="Bold" TextColor="DeepSkyBlue" FontSize="28"/>
         <Label x:Name="Lbl_welcomeTxt" VerticalOptions="Start" 
                 HorizontalOptions="Center" FontSize="Medium"/>
@@ -24,6 +24,11 @@
                 <Label x:Name="Lbl_ttlfncnt" FontAttributes="Bold" FontSize="Medium"/>
             </StackLayout>
         </StackLayout>
-
+        <Label/>
+        <Label/>
+        <Label/>
+        <Label/>
+        <Label/>
+        <Label Text="Developed by: Biswarup Sahoo (swarupkumar2@gmail.com)" FontSize="Micro" TextColor="Black" VerticalOptions="End" HorizontalOptions="Center" FontAttributes="Bold"/>
     </StackLayout>
 </ContentPage>
