@@ -36,6 +36,7 @@ namespace MyLibraryApp
                     new MasterDetailMenuItem { Id = 0, Title = "Home", TargetType = typeof(Welcome) },
                     new MasterDetailMenuItem { Id = 1, Title = "Books", TargetType = typeof(BooksListPage) },
                     new MasterDetailMenuItem { Id = 2, Title = "Friends", TargetType = typeof(FriendsListPage) },
+                    new MasterDetailMenuItem { Id = 3, Title = "About", TargetType = typeof(About) }
                 });
             }
             

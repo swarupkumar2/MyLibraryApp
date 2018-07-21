@@ -24,11 +24,6 @@
                 <Label x:Name="Lbl_ttlfncnt" FontAttributes="Bold" FontSize="Medium"/>
             </StackLayout>
         </StackLayout>
-        <Label/>
-        <Label/>
-        <Label/>
-        <Label/>
-        <Label/>
-        <Label Text="Developed by: Biswarup Sahoo (swarupkumar2@gmail.com)" FontSize="Micro" TextColor="Black" VerticalOptions="End" HorizontalOptions="Center" FontAttributes="Bold"/>
+        
     </StackLayout>
 </ContentPage>
