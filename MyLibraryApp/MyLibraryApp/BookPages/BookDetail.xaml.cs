@@ -77,9 +77,12 @@ namespace MyLibraryApp
             else
             {
                 Friend friend = (from f in App._friendlist where f.Phone.Contains(book.Contact) select f).FirstOrDefault<Friend>();
-                friend.BookList.Remove(book.Isbn);
-                friend.History.Add(book.Isbn);
-
+                if (friend != null)
+                {
+                    friend.BookList.Remove(book.Isbn);
+                    friend.History.Add(book.Isbn);
+                }
+                
                 book.Friend = null;
                 book.BorrowDate = null;
                 book.ReturnDate = null;
